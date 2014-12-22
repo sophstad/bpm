@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  
+  <head>
+    <meta chartset="utf-8">
+    <title>Top Artists</title>
+    <link rel="stylesheet" type="text/css" href="/static/stylin.css">
+    <link href='http://fonts.googleapis.com/css?family=Karla:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+  </head>
+
+  <body>
+    <h1>Month In Review</h1>
+    <ol>
+    {% for artist in api_data['topartists']['artist'] %}
+      <li>{{ artist.name }}</li>
+    {% endfor %}
+    </ol>
+
+    <ul>
+    {% for image in api_data['topartists']['artist']['image'] %}
+      <image src="{{ image.size }}">
+      <li>{{ image.size }}</li>
+    {% endfor %}
+    </ul>
+  </body>
+
+</html>
