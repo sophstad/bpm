@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  
+  <head>
+    <meta chartset="utf-8">
+    <title>beats per month</title>
+    <link rel="stylesheet" type="text/css" href="/static/stylin.css">
+    <link href='http://fonts.googleapis.com/css?family=Karla:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>yr weekly top ten</h1>
+      <ol>
+      {% for artist in artist_data_weekly['topartists']['artist'] %}
+        <li><a href="{{ artist.url }}">{{ artist.name }}</a> <i>{{ artist.playcount }} plays</i></li>
+      {% endfor %}
+      </ol>
+    </div>
+  </body>
+
+</html>
