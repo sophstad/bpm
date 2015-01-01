@@ -23,7 +23,11 @@ a { text-decoration: none; }
 
 a:link, a:visited { color: white; }
 
-a:hover { color: random_color; }
+a.green:hover { color: green; }
+a.fucshia:hover { color: fuchsia; }
+a.blue:hover { color: blue; }
+a.red:hover { color: red; }
+a.aqua:hover { color: aqua; }
 
 .rotate {
 /* Safari */
@@ -61,10 +65,8 @@ a:hover { color: random_color; }
    position: absolute;
    top: 0;
    z-index: 0;
-
- /*  opacity: .4; */
-
 }
+
 #photos img {
   /* Just in case there are inline attributes */
   width: 100% !important;
