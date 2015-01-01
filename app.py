@@ -1,9 +1,6 @@
-from flask import Flask, jsonify, render_template
-from urllib2 import urlopen
+from flask import Flask, render_template
 import requests
 import json
-import csv
-from jinja2 import Environment
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
