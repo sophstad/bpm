@@ -14,7 +14,7 @@
       {% for artist in artist_data['topartists']['artist'] %}
         {% for image in artist['image'] %}
           {% if image.size == "mega" %}
-            <img class="{{ artist.name }}" src="{{ image['#text'] }}">
+            <img src="{{ image['#text'] }}">
           {% endif %}
         {% endfor %}
       {% endfor %}
