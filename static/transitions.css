@@ -1,0 +1,366 @@
+/*
+* jQuery Mobile Framework 1.0
+* http://jquerymobile.com
+*
+* Copyright 2011 (c) jQuery Project
+* Dual licensed under the MIT or GPL Version 2 licenses.
+* http://jquery.org/license
+*
+*/
+
+/* Loader */
+.ui-icon-loading {
+    background: url(images/ajax-loader.gif);
+    background-size: 2.875em 2.875em;
+}
+.ui-loader {
+  display:none !important;
+}
+.ui-icon-loading {
+    background:none !important;
+}
+
+/* Structure */
+
+/* Focus state - set here for specificity
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-focus {
+  -moz-box-shadow: 0px 0px 12px     #387bbe /*{global-active-background-color}*/;
+  -webkit-box-shadow: 0px 0px 12px  #387bbe /*{global-active-background-color}*/;
+  box-shadow: 0px 0px 12px      #387bbe /*{global-active-background-color}*/;
+}
+
+/* unset box shadow in browsers that don't do it right
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-mobile-nosupport-boxshadow * {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+/* ...and bring back focus */
+.ui-mobile-nosupport-boxshadow .ui-focus {
+  outline-width: 2px;
+}
+/* some unsets - more probably needed */
+.ui-mobile, .ui-mobile body { height: 100%; }
+.ui-mobile fieldset, .ui-page { padding: 0; margin: 0; }
+.ui-mobile a img, .ui-mobile fieldset { border: 0; }
+
+/* responsive page widths */
+.ui-mobile-viewport {  margin: 0; overflow-x: visible; -webkit-text-size-adjust: none; -ms-text-size-adjust:none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+/* Issue #2066 */
+body.ui-mobile-viewport,
+div.ui-mobile-viewport { overflow-x: hidden; }
+
+/* "page" containers - full-screen views, one should always be in view post-pageload */
+.ui-mobile [data-role=page], .ui-mobile [data-role=dialog], .ui-page { top: 0; left: 0; width: 100%; min-height: 100%; position: absolute; display: none; border: 0; }
+.ui-mobile .ui-page-active { display: block; overflow: visible; }
+
+/* on ios4, setting focus on the page element causes flashing during transitions when there is an outline, so we turn off outlines */
+.ui-page { outline: none; }
+
+/*orientations from js are available */
+@media screen and (orientation: portrait){
+.ui-mobile, .ui-mobile .ui-page { min-height: 420px; }
+}
+@media screen and (orientation: landscape){
+.ui-mobile, .ui-mobile .ui-page { min-height: 300px; }
+}
+
+/* fullscreen class on ui-content div */
+.ui-fullscreen {  }
+.ui-fullscreen img { max-width: 100%; }
+
+/* non-js content hiding */
+.ui-nojs { position: absolute; left: -9999px; }
+
+/* accessible content hiding */
+.ui-hide-label label,
+.ui-hidden-accessible { position: absolute !important; left: -9999px; clip: rect(1px 1px 1px 1px); clip: rect(1px,1px,1px,1px); }
+.spin  {
+  -webkit-transform: rotate(360deg);
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count:  infinite;
+  -webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes spin {
+  from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(360deg);}
+}
+
+/* Transitions from jQtouch (with small modifications): http://www.jqtouch.com/
+Built by David Kaneda and maintained by Jonathan Stark.
+*/
+.in, .out {
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-duration: 350ms;
+}
+
+
+.slide.out {
+  -webkit-transform: translateX(-100%);
+  -webkit-animation-name: slideouttoleft;
+}
+
+.slide.in {
+  -webkit-transform: translateX(0);
+  -webkit-animation-name: slideinfromright;
+}
+
+.slide.out.reverse {
+  -webkit-transform: translateX(100%);
+  -webkit-animation-name: slideouttoright;
+}
+
+.slide.in.reverse {
+  -webkit-transform: translateX(0);
+  -webkit-animation-name: slideinfromleft;
+}
+
+.slideup.out {
+  -webkit-animation-name: dontmove;
+  z-index: 0;
+}
+
+.slideup.in {
+  -webkit-transform: translateY(0);
+  -webkit-animation-name: slideinfrombottom;
+  z-index: 10;
+}
+
+.slideup.in.reverse {
+  z-index: 0;
+  -webkit-animation-name: dontmove;
+}
+
+.slideup.out.reverse {
+  -webkit-transform: translateY(100%);
+  z-index: 10;
+  -webkit-animation-name: slideouttobottom;
+}
+
+.slidedown.out {
+  -webkit-animation-name: dontmove;
+  z-index: 0;
+}
+
+.slidedown.in {
+  -webkit-transform: translateY(0);
+  -webkit-animation-name: slideinfromtop;
+  z-index: 10;
+}
+
+.slidedown.in.reverse {
+  z-index: 0;
+  -webkit-animation-name: dontmove;
+}
+
+.slidedown.out.reverse {
+  -webkit-transform: translateY(-100%);
+  z-index: 10;
+  -webkit-animation-name: slideouttotop;
+}
+
+@-webkit-keyframes slideinfromright {
+    from { -webkit-transform: translateX(100%); }
+    to { -webkit-transform: translateX(0); }
+}
+
+@-webkit-keyframes slideinfromleft {
+    from { -webkit-transform: translateX(-100%); }
+    to { -webkit-transform: translateX(0); }
+}
+
+@-webkit-keyframes slideouttoleft {
+    from { -webkit-transform: translateX(0); }
+    to { -webkit-transform: translateX(-100%); }
+}
+
+@-webkit-keyframes slideouttoright {
+    from { -webkit-transform: translateX(0); }
+    to { -webkit-transform: translateX(100%); }
+}
+
+@-webkit-keyframes slideinfromtop {
+    from { -webkit-transform: translateY(-100%); }
+    to { -webkit-transform: translateY(0); }
+}
+
+@-webkit-keyframes slideinfrombottom {
+    from { -webkit-transform: translateY(100%); }
+    to { -webkit-transform: translateY(0); }
+}
+
+@-webkit-keyframes slideouttobottom {
+    from { -webkit-transform: translateY(0); }
+    to { -webkit-transform: translateY(100%); }
+}
+
+@-webkit-keyframes slideouttotop {
+    from { -webkit-transform: translateY(0); }
+    to { -webkit-transform: translateY(-100%); }
+}
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@-webkit-keyframes fadeout {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.fade.out {
+  z-index: 0;
+  -webkit-animation-name: fadeout;
+}
+
+.fade.in {
+  opacity: 1;
+  z-index: 10;
+  -webkit-animation-name: fadein;
+}
+
+/* The properties in this rule are only necessary for the 'flip' transition.
+ * We need specify the perspective to create a projection matrix. This will add
+ * some depth as the element flips. The depth number represents the distance of
+ * the viewer from the z-plane. According to the CSS3 spec, 1000 is a moderate
+ * value.
+ */
+.viewport-flip {
+  -webkit-perspective: 1000;
+  position: absolute;
+}
+
+.ui-mobile-viewport-transitioning,
+.ui-mobile-viewport-transitioning .ui-page {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.flip {
+  -webkit-animation-duration: .65s;
+  -webkit-backface-visibility:hidden;
+  -webkit-transform:translateX(0); /* Needed to work around an iOS 3.1 bug that causes listview thumbs to disappear when -webkit-visibility:hidden is used. */
+}
+
+.flip.out {
+  -webkit-transform: rotateY(-180deg) scale(.8);
+  -webkit-animation-name: flipouttoleft;
+}
+
+.flip.in {
+  -webkit-transform: rotateY(0) scale(1);
+  -webkit-animation-name: flipinfromleft;
+}
+
+/* Shake it all about */
+
+.flip.out.reverse {
+  -webkit-transform: rotateY(180deg) scale(.8);
+  -webkit-animation-name: flipouttoright;
+}
+
+.flip.in.reverse {
+  -webkit-transform: rotateY(0) scale(1);
+  -webkit-animation-name: flipinfromright;
+}
+
+@-webkit-keyframes flipinfromright {
+    from { -webkit-transform: rotateY(-180deg) scale(.8); }
+    to { -webkit-transform: rotateY(0) scale(1); }
+}
+
+@-webkit-keyframes flipinfromleft {
+    from { -webkit-transform: rotateY(180deg) scale(.8); }
+    to { -webkit-transform: rotateY(0) scale(1); }
+}
+
+@-webkit-keyframes flipouttoleft {
+    from { -webkit-transform: rotateY(0) scale(1); }
+    to { -webkit-transform: rotateY(-180deg) scale(.8); }
+}
+
+@-webkit-keyframes flipouttoright {
+    from { -webkit-transform: rotateY(0) scale(1); }
+    to { -webkit-transform: rotateY(180deg) scale(.8); }
+}
+
+
+/* Hackish, but reliable. */
+
+@-webkit-keyframes dontmove {
+    from { opacity: 1; }
+    to { opacity: 1; }
+}
+
+.pop {
+  -webkit-transform-origin: 50% 50%;
+}
+
+.pop.in {
+  -webkit-transform: scale(1);
+    opacity: 1;
+  -webkit-animation-name: popin;
+  z-index: 10;
+}
+
+.pop.in.reverse {
+  z-index: 0;
+  -webkit-animation-name: dontmove;
+}
+
+.pop.out.reverse {
+  -webkit-transform: scale(.2);
+  opacity: 0;
+  -webkit-animation-name: popout;
+  z-index: 10;
+}
+
+@-webkit-keyframes popin {
+    from {
+        -webkit-transform: scale(.2);
+        opacity: 0;
+    }
+    to {
+        -webkit-transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes popout {
+    from {
+        -webkit-transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        -webkit-transform: scale(.2);
+        opacity: 0;
+    }
+}/* content configurations. */
+.ui-grid-a, .ui-grid-b, .ui-grid-c, .ui-grid-d { overflow: hidden; }
+.ui-block-a, .ui-block-b, .ui-block-c, .ui-block-d, .ui-block-e { margin: 0; padding: 0; border: 0; float: left; min-height:1px;}
+
+/* grid solo: 100 - single item fallback */
+.ui-grid-solo .ui-block-a { width: 100%; float: none; }
+
+/* grid a: 50/50 */
+.ui-grid-a .ui-block-a, .ui-grid-a .ui-block-b { width: 50%; }
+.ui-grid-a .ui-block-a { clear: left; }
+
+/* grid b: 33/33/33 */
+.ui-grid-b .ui-block-a, .ui-grid-b .ui-block-b, .ui-grid-b .ui-block-c { width: 33.333%; }
+.ui-grid-b .ui-block-a { clear: left; }
+
+/* grid c: 25/25/25/25 */
+.ui-grid-c .ui-block-a, .ui-grid-c .ui-block-b, .ui-grid-c .ui-block-c, .ui-grid-c .ui-block-d { width: 25%; }
+.ui-grid-c .ui-block-a { clear: left; }
+
+/* grid d: 20/20/20/20/20 */
+.ui-grid-d .ui-block-a, .ui-grid-d .ui-block-b, .ui-grid-d .ui-block-c, .ui-grid-d .ui-block-d, .ui-grid-d .ui-block-e { width: 20%; }
+.ui-grid-d .ui-block-a { clear: left; }

@@ -4,31 +4,41 @@
 
   <head>
     <meta chartset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>beats per month</title>
+
     <link rel="stylesheet" type="text/css" href="/static/stylin.css">
     <link href='http://fonts.googleapis.com/css?family=Karla:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/static/transitions.css" />
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
   </head>
 
   <body>
-    <section id="photos">
-      {% for artist in artist_data['topartists']['artist'] %}
-        {% for image in artist['image'] %}
-          {% if image.size == "mega" %}
-            <img src="{{ image['#text'] }}">
-          {% endif %}
+    <div data-role="page">
+      <section id="photos">
+        {% for artist in artist_data['topartists']['artist'] %}
+          {% for image in artist['image'] %}
+            {% if image.size == "mega" %}
+              <img src="{{ image['#text'] }}">
+            {% endif %}
+          {% endfor %}
         {% endfor %}
-      {% endfor %}
-    </section>
+      </section>
 
-    <div class="container">
-      <h1>Beats Per Month</h1>
-      <ol class="double">
-      {% for artist in artist_data['topartists']['artist'] %}
-        <li class="rotate"><a href="{{ artist.url }}">{{ artist.name }}</a></li>
-      {% endfor %}
-        <li class="rotate">Check out <a href="/weekly">last week in review</a></li>
-        <li class="rotate">A <a href="http://sophiestadler.com">sophstad</a> enterprise</li>
-      </ol>
+      <div class="container" data-role="content">
+        <h1>Beats Per Month</h1>
+        <a href="/weekly" data-transition="slide">Check out weekly!</a>
+        <ol class="double">
+        {% for artist in artist_data['topartists']['artist'] %}
+          <li class="rotate"><a href="{{ artist.url }}">{{ artist.name }}</a></li>
+        {% endfor %}
+          <li class="rotate">Check out <a href="/weekly">last week in review</a></li>
+          <li class="rotate">A <a href="http://sophiestadler.com">sophstad</a> enterprise</li>
+        </ol>
+      </div>
     </div>
   </body>
 
