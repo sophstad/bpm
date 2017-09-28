@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta chartset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>beats per month</title>
+    
+    <link href='http://fonts.googleapis.com/css?family=Karla:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/transitions.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylin.css') }}">
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/background-colors.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/link-colors.js') }}"></script>
+  </head>
+
+  <body>
+    <div>
+      <section id="photos">
+        {% for artist in artist_data['topartists']['artist'] %}
+          {% for image in artist['image'] %}
+            {% if image.size == "mega" %}
+              <img src="{{ image['#text'] }}">
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </section>
+
+      <div class="container">
+        <h1>Beats Per Month</h1>
+        <a href="/weekly">Check out weekly!</a>
+        <ol class="double">
+        {% for artist in artist_data['topartists']['artist'] %}
+          <li class="rotate"><a href="{{ artist.url }}">{{ artist.name }}</a></li>
+        {% endfor %}
+          <li class="rotate">Check out <a href="/weekly">last week in review</a></li>
+          <li class="rotate">A <a href="http://sophiestadler.com">sophstad</a> enterprise</li>
+        </ol>
+      </div>
+    </div>
+  </body>
+
+</html>

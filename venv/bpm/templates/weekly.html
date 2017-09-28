@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  
+  <head>
+    <meta chartset="utf-8">
+
+    <title>beats per month</title>
+    
+    <link href='http://fonts.googleapis.com/css?family=Karla:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/transitions.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylin.css') }}">
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/background-colors.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/link-colors.js') }}"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>yr weekly top ten</h1>
+
+      <ol>
+      {% for artist in artist_data_weekly['topartists']['artist'] %}
+        <li><a href="{{ artist.url }}">{{ artist.name }}</a> <i>{{ artist.playcount }} plays</i></li>
+      {% endfor %}
+      </ol>
+    </div>
+  </body>
+
+</html>

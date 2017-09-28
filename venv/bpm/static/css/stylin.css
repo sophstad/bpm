@@ -1,0 +1,111 @@
+html, body {
+
+  color: white;
+  font-family: 'Karla', sans-serif;
+  font-size: 48px;
+  font-weight: bold;
+  height: 100%;
+  margin: 0;
+  text-transform: uppercase;
+}
+.container {
+  height: inherit;
+  margin: 0 auto;
+  position: relative;
+  width: 80%;
+}
+h1 {
+  font-style: italic;
+}
+
+/* links.css from mrmrs */
+a { text-decoration: none; }
+
+a:link, a:visited { color: white; }
+
+a.green:hover { color: green; }
+a.fucshia:hover { color: fuchsia; }
+a.blue:hover { color: blue; }
+a.red:hover { color: red; }
+a.aqua:hover { color: aqua; }
+
+.rotate {
+/* Safari */
+-webkit-transform: rotate(-30deg);
+
+/* Firefox */
+-moz-transform: rotate(-30deg);
+
+/* IE */
+-ms-transform: rotate(-30deg);
+
+/* Opera */
+-o-transform: rotate(-30deg);
+}
+
+/*
+   CSS-Tricks Example
+   by Chris Coyier
+   http://css-tricks.com
+*/
+
+* { margin: 0; padding: 0; }
+
+#photos {
+   /* Prevent vertical gaps */
+   line-height: 0;
+
+   -webkit-column-count: 5;
+   -webkit-column-gap:   0px;
+   -moz-column-count:    5;
+   -moz-column-gap:      0px;
+   column-count:         5;
+   column-gap:           0px;
+
+   position: absolute;
+   top: 0;
+   z-index: 0;
+}
+
+#photos img {
+  /* Just in case there are inline attributes */
+  width: 100% !important;
+  height: auto !important;
+}
+
+@media (max-width: 1200px) {
+  #photos {
+  -moz-column-count:    4;
+  -webkit-column-count: 4;
+  column-count:         4;
+  }
+}
+@media (max-width: 1000px) {
+  #photos {
+  -moz-column-count:    3;
+  -webkit-column-count: 3;
+  column-count:         3;
+  }
+}
+@media (max-width: 800px) {
+  #photos {
+  -moz-column-count:    2;
+  -webkit-column-count: 2;
+  column-count:         2;
+  }
+}
+@media (max-width: 400px) {
+  #photos {
+  -moz-column-count:    1;
+  -webkit-column-count: 1;
+  column-count:         1;
+  }
+}
+
+.double li {
+  float: left;
+  width: 50%;
+}
+.double {
+  height: auto;
+}
